@@ -1,0 +1,29 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Deny",
+      "Action": [
+        "s3:BypassGovernanceRetention",
+        "s3:PutObject",
+        "s3:ReplicateObject"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "Null": {
+          "s3:x-amz-server-side-encryption": "aws:kms"
+        },
+        "ArnNotLike": {
+          "aws:PrincipalARN": [
+            "arn:${PARTITION}:iam::*:role/${ACCELERATOR_PREFIX}-*",
+            "arn:${PARTITION}:iam::*:role/AWSControlTowerExecution",
+            "arn:${PARTITION}:iam::*:role/cdk-accel-*"
+          ]
+        },
+        "ForAnyValue:StringEquals": {
+          "aws:CalledVia": ["cloudformation.amazonaws.com"]
+        }
+      }
+    }
+  ]  
+}

@@ -1,0 +1,47 @@
+mandatoryAccounts:
+  - name: Management
+    description: >-
+      The management (primary) account. Do not change the name field for this
+      mandatory account. Note, the account name key does not need to match the
+      AWS account name.
+    email: ${{ values.mgmt_account_email }}
+    organizationalUnit: Root
+    warm: false
+  - name: LogArchive
+    description: >-
+      The log archive account. Do not change the name field for this mandatory
+      account. Note, the account name key does not need to match the AWS account
+      name.
+    email: ${{ values.log_archive_account_email }}
+    organizationalUnit: Security
+    warm: false
+  - name: Audit
+    description: >-
+      The security audit account (also referred to as the audit account). Do not
+      change the name field for this mandatory account. Note, the account name
+      key does not need to match the AWS account name.
+    email: ${{ values.audit_archive_account_email }}
+    organizationalUnit: Security
+    warm: false
+workloadAccounts:
+  - name: Network
+    description: The Network account
+    email: ${{ values.network_account_email }}
+    organizationalUnit: Infrastructure
+  - name: SharedServices
+    description: The SharedServices account
+    email: ${{ values.shared_services_account_email }}
+    organizationalUnit: Infrastructure
+  - name: Dev
+    description: The Dev Account for workloads
+    email: ${{ values.dev_account_email }}
+    organizationalUnit: NonProduction     
+  - name: Staging
+    description: The Staging Account for workloads
+    email: ${{ values.staging_account_email }}
+    organizationalUnit: NonProduction  
+  - name: Production
+    description: The Production Account for workloads
+    email: ${{ values.prod_account_email }}
+    organizationalUnit: Production
+       

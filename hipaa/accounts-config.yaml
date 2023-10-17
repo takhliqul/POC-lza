@@ -1,0 +1,36 @@
+mandatoryAccounts:
+  # We recommend you do not change mandatory account names. These are used within Landing Zone Accelerator to reference the accounts from other config files. 
+  # The "name" value does not currently support spaces
+  # The "name" value DOES NOT need to match the account name
+  - name: Management
+    description: The management (primary) account. Do not change the name field for this mandatory account. Note, the account name key does not need to match the AWS account name.
+    email: ${{ values.mgmt_account_email }}
+    organizationalUnit: Root
+  - name: LogArchive
+    description: The log archive account. Do not change the name field for this mandatory account. Note, the account name key does not need to match the AWS account name.
+    email: ${{ values.log_archive_account_email }}
+    organizationalUnit: Security
+  - name: Audit
+    description: The security audit account (also referred to as the audit account). Do not change the name field for this mandatory account. Note, the account name key does not need to match the AWS account name.
+    email: ${{ values.audit_archive_account_email }}
+    organizationalUnit: Security
+workloadAccounts:
+  # The "name" will be used to set the AWS Account name
+  # The "name" value does not currently support spaces
+  # The "name" value DOES NOT need to match the account name
+  - name: Network-Dev
+    description: The Network Dev account
+    email: ${{ values.network_dev_account_email }}
+    organizationalUnit: Infrastructure/INFRA-DEV   
+  - name: Network-Prod
+    description: The Network Prod account
+    email: ${{ values.network_prod_account_email }}
+    organizationalUnit: Infrastructure/INFRA-PROD
+  - name: HIS-WL-NON-PROD
+    description: The Non Prod WL account
+    email: ${{ values.his_non_prod_wl_account_email }}
+    organizationalUnit: HIS/HIS-NON-PROD
+  - name: HIS-WL-PROD
+    description: The WL prod account
+    email: ${{ values.his_prod_wl_account_email }}
+    organizationalUnit: HIS/HIS-PROD   
